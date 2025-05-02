@@ -194,7 +194,7 @@ ariadl() {
             rm "$OUTPUT_DIR/$OUTPUT_FILE"
         fi
         
-        aria2c -q -d "$OUTPUT_DIR" -o "$OUTPUT_FILE" "$URL"
+        aria2c --check-certificate=false -q -d "$OUTPUT_DIR" -o "$OUTPUT_FILE" "$URL"
         
         if [ $? -eq 0 ]; then
            log "SUCCESS" "Downloaded: $OUTPUT_FILE"
@@ -263,7 +263,7 @@ download_packages() {
         if [[ "$base_url" != *"api.github.com"* ]]; then
             # Download and process page content directly
             local page_content
-            if ! page_content=$(curl -sL --max-time 30 --retry 3 --retry-delay 2 "$base_url"); then
+            if ! page_content=$(curl -ksL --max-time 30 --retry 3 --retry-delay 2 "$base_url"); then
                 error_msg "Failed to fetch page: $base_url"
                 continue
             fi

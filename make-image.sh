@@ -87,7 +87,7 @@ handle_profile_packages() {
     if [ "$1" == "rpi-4" ]; then
         PACKAGES+=" kmod-i2c-bcm2835 i2c-tools kmod-i2c-core kmod-i2c-gpio"
     elif [ "$ARCH_2" == "x86_64" ]; then
-        PACKAGES+=" kmod-iwlwifi kmod-ath10k iw-full pciutils ath10k-firmware-qca9377"
+        PACKAGES+=" kmod-iwlwifi kmod-ath10k iw-full pciutils ath10k-firmware-qca9377 openssh-sftp-server"
     fi
 
     case "${TYPE}" in
